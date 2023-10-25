@@ -1,13 +1,10 @@
 
-package assignment4;
+package subClass;
 
 public class NoDigit extends Exception
 {
-    String msg;
-    public NoDigit(String msg) 
+    public NoDigit(/*PasswordTooShort*/) 
     {
         super("There is no digit! You need to have at least 8 digits in your password");
-    }//End constructor
-    
-    
+    }//End constructor 
 }//End NoDigit

@@ -1,9 +1,9 @@
 
-package assignment4;
+package subClass;
 
 public class PasswordTooShort extends Exception
 {
-    public PasswordTooShort(String msg) 
+    public PasswordTooShort(/*String msg*/) 
     {
         super("Your password is too short! You need to have at least 8 digits in your password");
     }//End constructor 

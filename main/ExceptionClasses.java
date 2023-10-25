@@ -1,28 +1,32 @@
 
 package main;
 
-import static assignment4.ValidatePassword.validatePassword;
+import subClass.*;
 import java.util.Scanner;
 
 
 public class ExceptionClasses 
 {  
-    private static boolean validatePassword(String word) throws PasswordTooShort, NoUpperCase, NoLowerCase, NoDigit 
+    private static boolean validatePassword(String word) 
+            throws PasswordTooShort, NoUpperCase, NoLowerCase, NoDigit 
     {
         if (word.length() < 8) 
         {
-           return false;
-        }
-        else 
+           throw new PasswordTooShort();
+        }//End if loop PasswordTooShort
+        if (!word.matches(".*[A-Z].*"))
         {
-            for (int i = 0; i < word.length(); i++) 
-            {
-                if (Character.NoUpperCase(word.charAt(i))) 
-                {
-                    throw new NoUpperCase();
-                }
-            }
-        }
+           throw new NoUpperCase();
+        }//End if loop NoUpperCase
+        if (!word.matches(".*[a-z].*"))
+        {
+            throw new NoLowerCase();
+        }//End if loop NoLowerCase
+        if (!word.matches(".*[0-9].*")) 
+        {
+            throw new NoDigit();
+        }//End if loop NoDigit
+        return true;
     } //End validatePassword
     
     public static void main(String[] args) 
