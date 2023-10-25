@@ -1,5 +1,5 @@
 
-package assignment4;
+package main;
 
 import static assignment4.ValidatePassword.validatePassword;
 import java.util.Scanner;
@@ -30,8 +30,8 @@ public class ExceptionClasses
         Scanner scanner = new Scanner(System.in);
         String word;
         
-        //while (true) 
-        //{
+        while (true) 
+        {
         try 
         {
             System.out.print("Enter a password: ");
@@ -43,7 +43,6 @@ public class ExceptionClasses
         {
             System.out.println("Invalid Password: " + e.getMessage());
         }//End catch
-        //}//End while loop
-        scanner.close();
+        }//End while loop
     }//End main  
 }//End public class Assignment4 
