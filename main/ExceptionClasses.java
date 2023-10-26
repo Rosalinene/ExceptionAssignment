@@ -1,7 +1,7 @@
 
 package main;
 
-import subClass.*;
+import exceptiontypes.*;
 import java.util.Scanner;
 
 
@@ -12,20 +12,20 @@ public class ExceptionClasses
     {
         if (word.length() < 8) 
         {
-           throw new PasswordTooShort();
+           throw new PasswordTooShort("Your password is too short! You need to have at least 8 characters in your password");
         }//End if loop PasswordTooShort
-        if (!word.matches(".*[A-Z].*"))
-        {
-           throw new NoUpperCase();
-        }//End if loop NoUpperCase
-        if (!word.matches(".*[a-z].*"))
-        {
-            throw new NoLowerCase();
-        }//End if loop NoLowerCase
         if (!word.matches(".*[0-9].*")) 
         {
-            throw new NoDigit();
+            throw new NoDigit("There is no digit! You need to have at least one digit in your password");
         }//End if loop NoDigit
+        if (!word.matches(".*[a-z].*"))
+        {
+            throw new NoLowerCase("You need to have at least one lower case in your password");
+        }//End if loop NoLowerCase
+        if (!word.matches(".*[A-Z].*"))
+        {
+           throw new NoUpperCase("You need to have at least one upper case in your password");
+        }//End if loop NoUpperCase 
         return true;
     } //End validatePassword
     
@@ -36,17 +36,19 @@ public class ExceptionClasses
         
         while (true) 
         {
-        try 
-        {
-            System.out.print("Enter a password: ");
-            word = scanner.nextLine();
-            validatePassword(word);
-            System.out.println("Password is valid.");
-        }//End try
-        catch (PasswordTooShort | NoUpperCase | NoLowerCase | NoDigit e) 
-        {
-            System.out.println("Invalid Password: " + e.getMessage());
-        }//End catch
-        }//End while loop
+            try 
+            {
+                System.out.print("Enter a password: ");
+                word = scanner.nextLine();
+                validatePassword(word);
+                System.out.println("Password is valid.");
+                break;
+            }//End try
+            catch (Exception e) 
+            {
+                System.out.println("Invalid Password: " + e.getMessage());
+            }//End catch
+            }//End while loop
+            scanner.close();
     }//End main  
 }//End public class Assignment4 
